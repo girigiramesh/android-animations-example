@@ -1,11 +1,13 @@
 package com.animations_example;
 
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,11 +27,16 @@ import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private ImageView iv_plus, imageView;
     private TextView text, tv_scale_fade, tv_slide, tv_slide_left;
-    Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text, btn_slide_left;
+    Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text, btn_slide_left, btn_shuffle;
     ViewGroup transitionsContainer;
+    LayoutInflater inflater;
     View button_path;
 
     @Override
@@ -163,5 +170,35 @@ public class MainActivity extends AppCompatActivity {
                 imageView.setScaleType(mExpanded ? ImageView.ScaleType.CENTER_CROP : ImageView.ScaleType.FIT_CENTER);
             }
         });
+//  ------------ TransitionName Shuffle ------------
+        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final ViewGroup layout = (ViewGroup) findViewById(R.id.tn_container);
+        btn_shuffle = (Button) findViewById(R.id.btn_shuffle);
+
+        final List<String> titles = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            titles.add(String.format("Item %d", i + 1));
+        }
+
+        createViews(inflater, layout, titles);
+        btn_shuffle.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(layout, new ChangeBounds());
+                Collections.shuffle(titles);
+                createViews(inflater, layout, titles);
+            }
+        });
+    }
+
+    private static void createViews(LayoutInflater inflater, ViewGroup layout, List<String> titles) {
+        layout.removeAllViews();
+        for (String title : titles) {
+            TextView textView = (TextView) inflater.inflate(R.layout.fragment_names_item, layout, false);
+            textView.setText(title);
+            TransitionManager.setTransitionName(textView, title);
+            layout.addView(textView);
+        }
     }
 }
