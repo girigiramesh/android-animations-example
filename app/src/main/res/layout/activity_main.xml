@@ -1,114 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/transitions_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_dark"
-        android:text="DO MAGIC" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Transitions are awesome!"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="25sp"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/button_scale_fade"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="DO MAGIC for Scale Fade" />
-
-    <TextView
-        android:id="@+id/tv_scale_fade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Transitions are awesome!"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="25sp"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btn_slide"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="DO MAGIC for Slide Right" />
-
-    <TextView
-        android:id="@+id/tv_slide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Transitions are awesome!"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="25sp"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btn_slide_left"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="DO MAGIC for Slide Left" />
-
-    <TextView
-        android:id="@+id/tv_slide_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Transitions are awesome!"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="25sp"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btn_recolor"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="DO MAGIC for Recolor" />
-
-    <ImageView
-        android:id="@+id/iv_plus"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_control_point_black" />
-
-    <Button
-        android:id="@+id/btn_change_text"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="Hi,I am Text.Tap on me!" />
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:padding="8dp">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <include
-            layout="@layout/button"
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|top" />
-    </FrameLayout>
-</LinearLayout>
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="DO MAGIC" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Transitions are awesome!"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button_scale_fade"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_purple"
+            android:text="DO MAGIC for Scale Fade" />
+
+        <TextView
+            android:id="@+id/tv_scale_fade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Transitions are awesome!"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_slide"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="DO MAGIC for Slide Right" />
+
+        <TextView
+            android:id="@+id/tv_slide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Transitions are awesome!"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_slide_left"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="DO MAGIC for Slide Left" />
+
+        <TextView
+            android:id="@+id/tv_slide_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Transitions are awesome!"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="25sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_recolor"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray"
+            android:text="DO MAGIC for Recolor" />
+
+        <ImageView
+            android:id="@+id/iv_plus"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_add_circle_outline_black" />
+
+        <Button
+            android:id="@+id/btn_change_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/holo_green_light"
+            android:text="Hi,I am Text.Tap on me!" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/images" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_horizontal"
+                android:text="Tap on image"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="8dp">
+
+            <include
+                layout="@layout/button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top" />
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>

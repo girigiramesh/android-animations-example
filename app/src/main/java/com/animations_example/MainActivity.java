@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.transitionseverywhere.ArcMotion;
 import com.transitionseverywhere.ChangeBounds;
+import com.transitionseverywhere.ChangeImageTransform;
 import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.Recolor;
@@ -25,7 +26,7 @@ import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView iv_plus;
+    private ImageView iv_plus, imageView;
     private TextView text, tv_scale_fade, tv_slide, tv_slide_left;
     Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text, btn_slide_left;
     ViewGroup transitionsContainer;
@@ -143,6 +144,23 @@ public class MainActivity extends AppCompatActivity {
                 FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button_path.getLayoutParams();
                 params.gravity = mToRightAnimation ? (Gravity.RIGHT | Gravity.BOTTOM) : (Gravity.LEFT | Gravity.TOP);
                 button_path.setLayoutParams(params);
+            }
+        });
+//  ------------ Change Image TransForm ---------------
+        imageView = (ImageView) transitionsContainer.findViewById(R.id.image);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            boolean mExpanded;
+
+            @Override
+            public void onClick(View v) {
+                mExpanded = !mExpanded;
+                TransitionManager.beginDelayedTransition(transitionsContainer, new TransitionSet()
+                        .addTransition(new ChangeBounds())
+                        .addTransition(new ChangeImageTransform()));
+                ViewGroup.LayoutParams params = imageView.getLayoutParams();
+                params.height = mExpanded ? ViewGroup.LayoutParams.MATCH_PARENT : ViewGroup.LayoutParams.WRAP_CONTENT;
+                imageView.setLayoutParams(params);
+                imageView.setScaleType(mExpanded ? ImageView.ScaleType.CENTER_CROP : ImageView.ScaleType.FIT_CENTER);
             }
         });
     }
