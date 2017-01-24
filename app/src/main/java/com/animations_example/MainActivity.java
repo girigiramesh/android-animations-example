@@ -26,8 +26,8 @@ import com.transitionseverywhere.extra.Scale;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView iv_plus;
-    private TextView text, tv_scale_fade, tv_slide;
-    Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text;
+    private TextView text, tv_scale_fade, tv_slide, tv_slide_left;
+    Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text, btn_slide_left;
     ViewGroup transitionsContainer;
     View button_path;
 
@@ -77,6 +77,19 @@ public class MainActivity extends AppCompatActivity {
                 visible = !visible;
                 TransitionManager.beginDelayedTransition(transitionsContainer, new Slide(Gravity.RIGHT));
                 tv_slide.setVisibility(visible ? View.VISIBLE : View.GONE);
+            }
+        });
+//  ------------ slide Left sample -------------
+        tv_slide_left = (TextView) transitionsContainer.findViewById(R.id.tv_slide_left);
+        btn_slide_left = (Button) transitionsContainer.findViewById(R.id.btn_slide_left);
+        btn_slide_left.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
+
+            @Override
+            public void onClick(View view) {
+                visible = !visible;
+                TransitionManager.beginDelayedTransition(transitionsContainer, new Slide(Gravity.LEFT));
+                tv_slide_left.setVisibility(visible ? View.VISIBLE : View.GONE);
             }
         });
 //  ---------- recolor sample -----------
