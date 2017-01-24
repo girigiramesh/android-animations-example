@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.Recolor;
 import com.transitionseverywhere.Rotate;
@@ -21,9 +22,8 @@ import com.transitionseverywhere.extra.Scale;
 public class MainActivity extends AppCompatActivity {
     private ImageView iv_plus;
     private TextView text, tv_scale_fade;
-    Button button, button_scale_fade, btn_recolor;
+    Button button, button_scale_fade, btn_recolor, btn_change_text;
     ViewGroup transitionsContainer;
-    boolean visible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         text = (TextView) transitionsContainer.findViewById(R.id.text);
         button = (Button) transitionsContainer.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
 
             @Override
             public void onClick(View v) {
@@ -46,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
         tv_scale_fade = (TextView) transitionsContainer.findViewById(R.id.tv_scale_fade);
         button_scale_fade = (Button) transitionsContainer.findViewById(R.id.button_scale_fade);
         button_scale_fade.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
 
             @Override
             public void onClick(View view) {
                 visible = !visible;
                 TransitionSet set = new TransitionSet()
-                        .addTransition(new Scale(0.1f))
+                        .addTransition(new Scale(0.7f))
                         .addTransition(new Fade())
                         .setInterpolator(visible ? new LinearOutSlowInInterpolator() : new FastOutLinearInInterpolator());
                 TransitionManager.beginDelayedTransition(transitionsContainer, set);
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //  ---------- recolor sample -----------
-        btn_recolor = (Button) findViewById(R.id.btn_recolor);
+        btn_recolor = (Button) transitionsContainer.findViewById(R.id.btn_recolor);
         btn_recolor.setOnClickListener(new View.OnClickListener() {
             boolean isColorsInverted;
             boolean mColorsInverted;
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //  ----------- isRotated sample ----------
-        iv_plus = (ImageView) findViewById(R.id.iv_plus);
+        iv_plus = (ImageView) transitionsContainer.findViewById(R.id.iv_plus);
         iv_plus.setOnClickListener(new View.OnClickListener() {
             boolean isRotated;
 
@@ -82,9 +84,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 isRotated = !isRotated;
                 TransitionManager.beginDelayedTransition(transitionsContainer, new Rotate());
-                iv_plus.setRotation(isRotated ? 135 : 0);
+                iv_plus.setRotation(isRotated ? 360 : 0);
             }
         });
+//  ----------- changeText sample -----------
+        btn_change_text = (Button) transitionsContainer.findViewById(R.id.btn_change_text);
+        btn_change_text.setOnClickListener(new View.OnClickListener() {
+            boolean isSecondText;
 
+            @Override
+            public void onClick(View view) {
+                isSecondText = !isSecondText;
+                TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
+                btn_change_text.setText(isSecondText ? "Hi,I am Text.Tap on me!" : "Thanks! Another tap?");
+            }
+        });
     }
 }
