@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,14 +16,15 @@ import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.Recolor;
 import com.transitionseverywhere.Rotate;
+import com.transitionseverywhere.Slide;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView iv_plus;
-    private TextView text, tv_scale_fade;
-    Button button, button_scale_fade, btn_recolor, btn_change_text;
+    private TextView text, tv_scale_fade,tv_slide;
+    Button button, button_scale_fade,btn_slide, btn_recolor, btn_change_text;
     ViewGroup transitionsContainer;
 
     @Override
@@ -58,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
                         .setInterpolator(visible ? new LinearOutSlowInInterpolator() : new FastOutLinearInInterpolator());
                 TransitionManager.beginDelayedTransition(transitionsContainer, set);
                 tv_scale_fade.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+            }
+        });
+//  ------------ slide right sample -------------
+        tv_slide = (TextView) transitionsContainer.findViewById(R.id.tv_slide);
+        btn_slide = (Button) transitionsContainer.findViewById(R.id.btn_slide);
+        btn_slide.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
+
+            @Override
+            public void onClick(View view) {
+                visible = !visible;
+                TransitionManager.beginDelayedTransition(transitionsContainer, new Slide(Gravity.RIGHT));
+                tv_slide.setVisibility(visible ? View.VISIBLE : View.GONE);
             }
         });
 //  ---------- recolor sample -----------

@@ -27,7 +27,7 @@
         android:id="@+id/button_scale_fade"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/holo_green_dark"
         android:text="DO MAGIC for Scale Fade" />
 
@@ -42,10 +42,28 @@
         android:visibility="gone" />
 
     <Button
+        android:id="@+id/btn_slide"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="DO MAGIC for Slide Right" />
+
+    <TextView
+        android:id="@+id/tv_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Transitions are awesome!"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="25sp"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btn_recolor"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/holo_green_dark"
         android:text="DO MAGIC for Recolor" />
 
@@ -53,14 +71,14 @@
         android:id="@+id/iv_plus"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_control_point_black" />
 
     <Button
         android:id="@+id/btn_change_text"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/holo_green_dark"
         android:text="Hi,I am Text.Tap on me!" />
 </LinearLayout>
