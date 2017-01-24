@@ -9,9 +9,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.transitionseverywhere.ArcMotion;
+import com.transitionseverywhere.ChangeBounds;
 import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.Recolor;
@@ -23,9 +26,10 @@ import com.transitionseverywhere.extra.Scale;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView iv_plus;
-    private TextView text, tv_scale_fade,tv_slide;
-    Button button, button_scale_fade,btn_slide, btn_recolor, btn_change_text;
+    private TextView text, tv_scale_fade, tv_slide;
+    Button button, button_scale_fade, btn_slide, btn_recolor, btn_change_text;
     ViewGroup transitionsContainer;
+    View button_path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +116,20 @@ public class MainActivity extends AppCompatActivity {
                 isSecondText = !isSecondText;
                 TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
                 btn_change_text.setText(isSecondText ? "Hi,I am Text.Tap on me!" : "Thanks! Another tap?");
+            }
+        });
+//  ---------- Path (Curved) motion -------------
+        button_path = transitionsContainer.findViewById(R.id.button_path);
+        button_path.setOnClickListener(new View.OnClickListener() {
+            boolean mToRightAnimation;
+
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeBounds().setPathMotion(new ArcMotion()).setDuration(500));
+                mToRightAnimation = !mToRightAnimation;
+                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button_path.getLayoutParams();
+                params.gravity = mToRightAnimation ? (Gravity.RIGHT | Gravity.BOTTOM) : (Gravity.LEFT | Gravity.TOP);
+                button_path.setLayoutParams(params);
             }
         });
     }

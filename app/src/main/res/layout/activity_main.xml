@@ -69,8 +69,8 @@
 
     <ImageView
         android:id="@+id/iv_plus"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/ic_control_point_black" />
 
@@ -81,4 +81,16 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/holo_green_dark"
         android:text="Hi,I am Text.Tap on me!" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="8dp">
+
+        <include
+            layout="@layout/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top" />
+    </FrameLayout>
 </LinearLayout>
